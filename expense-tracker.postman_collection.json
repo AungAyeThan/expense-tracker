@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "60883aca-249d-4856-82ea-93ecdc03ebf7",
+		"name": "expense-tracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24481672"
+	},
+	"item": [
+		{
+			"name": "create transaction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTIyOGVlN2I2YTNkODhkYTE0MmMxNzMiLCJ1c2VybmFtZSI6ImF1bmciLCJpYXQiOjE2OTY3OTA5NDMsImV4cCI6MTY5Njc5Mzk0M30.7tU2arePOxTnE9lx8TbZ_Kt_AgzELFMo7_NDovq2XzE"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"category\": \"dinner\",\n    \"amount\": 100.00,\n    \"date\": \"2023-10-09T11:13:43.705Z\",\n    \"type\": \"expense\",\n    \"notes\": \"\",\n    \"payment_method\": \"cash\",\n    \"items\" : [\n        {\n            \"name\": \"chicken ricesssss\",\n            \"price\": 100.00,\n            \"quantity\": 1\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3000/transaction/create"
+			},
+			"response": []
+		},
+		{
+			"name": "get transaction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTIyOGVlN2I2YTNkODhkYTE0MmMxNzMiLCJ1c2VybmFtZSI6ImF1bmciLCJpYXQiOjE2OTY3ODg1OTEsImV4cCI6MTY5Njc5MTU5MX0.2B4dwwXT9LSwjTFNl0jUVXRQoLH_uykaOOLOpdxtieM"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "localhost:3000/transaction/expenses/6522cb056f290b978a126486"
+			},
+			"response": []
+		},
+		{
+			"name": "list transactions",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTIyOGVlN2I2YTNkODhkYTE0MmMxNzMiLCJ1c2VybmFtZSI6ImF1bmciLCJpYXQiOjE2OTY3OTA5NDMsImV4cCI6MTY5Njc5Mzk0M30.7tU2arePOxTnE9lx8TbZ_Kt_AgzELFMo7_NDovq2XzE"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/transaction/list?orderBy=asc&filter=category=dinner,type=expense",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transaction",
+						"list"
+					],
+					"query": [
+						{
+							"key": "orderBy",
+							"value": "asc"
+						},
+						{
+							"key": "filter",
+							"value": "category=dinner,type=expense"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"aung\",\n    \"email\": \"aung@gmail.com\",\n    \"password\": \"testing1234\",\n    \"phone\": \"0951564343\",\n    \"address\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3000/user/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "user login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"aung@gmail.com\",\n    \"password\": \"testing1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3000/user/login"
+			},
+			"response": []
+		}
+	]
+}
