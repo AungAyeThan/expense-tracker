@@ -27,8 +27,8 @@ export class TransactionRepository {
         return transaction;
     }
 
-    async listTransactions(filter: TransactionFilter, orderBy: string): Promise<Transaction[]>{
-        // Create a dynamic where object based on provided filters
+    async listTransactions(filter: TransactionFilter, orderBy: Prisma.SortOrder): Promise<Transaction[]>{
+        // TODO: Create a dynamic where object based on provided filters
         const where: Prisma.TransactionsWhereInput = {};
 
         if (filter.category) {
@@ -39,7 +39,21 @@ export class TransactionRepository {
             where.type = filter.type;
         }
 
-        const transaction = await prisma.transactions.findMany({ where });
+        const transaction = await prisma.transactions.findMany({ where, orderBy:[
+            {
+                date: orderBy
+            }
+        ] });
+        return transaction;
+    }
+
+    async deleteTransactions(transactionId: string): Promise<Transaction>{
+        const transaction = await prisma.transactions.delete({
+            where: {
+                id: transactionId
+            }
+        })
+
         return transaction;
     }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseEnumPipe, Post, Query, Res, UseGuards } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, Param, ParseEnumPipe, Post, Query, Res, UseGuards } from '@nestjs/common';
 import { Response } from "express";
 import { TransactionService } from './transaction.service';
 import { CreateTrasactionDto } from './dto/create-transaction.dto';
@@ -7,6 +7,7 @@ import { User } from 'src/provider/respository/user.interface';
 import { UserTransformerPipe } from 'src/validator/user-transformer.pipe';
 import { FilterParserPipe } from './pipes/filter-parser.pipe';
 import { Filter } from './type/filter';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 @Controller('transaction')
 export class TransactionController {
@@ -43,9 +44,15 @@ export class TransactionController {
     ){
         try {
             const transaction = await this.transactionService.listTransactions(filter, orderBy);
-            return res.json(transaction);
+            return res.json({"data": transaction});
         } catch (err) {
             throw err;
         }
+    }
+
+    @Delete('/expenses/:transactionId')
+    async deleteTransaction(@Param('transactionId') transactionId: string, @Res() res: Response){
+        const transaction = await this.transactionService.deleteTransaction(transactionId);
+        return res.json({message : "success"});
     }
 }

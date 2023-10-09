@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateTrasactionDto } from './dto/create-transaction.dto';
 import { Transaction } from 'src/provider/respository/transaction.interface';
-import { $Enums } from '@prisma/client';
+import { $Enums, Prisma } from '@prisma/client';
 import { TransactionRepository } from 'src/provider/respository/transaction.repository';
 import { Filter, TransactionFilter } from './type/filter';
 
@@ -33,7 +33,12 @@ export class TransactionService {
     }
 
     async getTransaction(transactionId: string): Promise<Transaction>{
-        return this.transactionRepo.getTransaction(transactionId);
+        const data = await this.transactionRepo.getTransaction(transactionId);
+        if (!data) {
+            throw new BadRequestException('Transaction not found');
+        }
+
+        return data;
     }
 
     async listTransactions(filter?: Filter, orderBy?: string){
@@ -42,6 +47,20 @@ export class TransactionService {
             category: filter.category,
             type: $Enums.TransactionType[filter.type],
         }
-        return this.transactionRepo.listTransactions(filterVal, orderBy);
+
+        const orderByVal = orderBy as Prisma.SortOrder
+        return this.transactionRepo.listTransactions(filterVal, orderByVal);
+    }
+
+    async deleteTransaction(transactionId: string): Promise<Transaction>{
+        try {
+            const data = await this.transactionRepo.deleteTransactions(transactionId);
+            return data;
+        } catch (err) {
+            if (err instanceof Prisma.PrismaClientKnownRequestError) {
+                throw new BadRequestException("transaction not found: unable to delete transaction");
+            }
+            throw err;
+        }
     }
 }
