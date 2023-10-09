@@ -15,6 +15,7 @@ Service that provides functionality to track the expenses.
   - Add expense
   - List expenses with filter parameters(category, type)
   - Get expense
+  - Delete expense
 
 ## Postman collection
 Please refer to expense-tracker.postman_collection for more information about the sample request payload.

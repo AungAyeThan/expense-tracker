@@ -12,14 +12,14 @@
 				"auth": {
 					"type": "bearer",
 					"bearer": {
-						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTIyOGVlN2I2YTNkODhkYTE0MmMxNzMiLCJ1c2VybmFtZSI6ImF1bmciLCJpYXQiOjE2OTY3OTA5NDMsImV4cCI6MTY5Njc5Mzk0M30.7tU2arePOxTnE9lx8TbZ_Kt_AgzELFMo7_NDovq2XzE"
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTIyOGVlN2I2YTNkODhkYTE0MmMxNzMiLCJ1c2VybmFtZSI6ImF1bmciLCJpYXQiOjE2OTY4MjEwODgsImV4cCI6MTY5NjgyNDA4OH0.xZWH4GvL2ncNiEMRQsTLpIBxZ9EkutklicHbA0xVOyE"
 					}
 				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"category\": \"dinner\",\n    \"amount\": 100.00,\n    \"date\": \"2023-10-09T11:13:43.705Z\",\n    \"type\": \"expense\",\n    \"notes\": \"\",\n    \"payment_method\": \"cash\",\n    \"items\" : [\n        {\n            \"name\": \"chicken ricesssss\",\n            \"price\": 100.00,\n            \"quantity\": 1\n        }\n    ]\n}",
+					"raw": "{\n    \"category\": \"lunch\",\n    \"amount\": 100.00,\n    \"date\": \"2023-10-08T11:13:43.705Z\",\n    \"type\": \"expense\",\n    \"notes\": \"testing\",\n    \"payment_method\": \"cash\",\n    \"items\" : [\n        {\n            \"name\": \"chicken ricesssss\",\n            \"price\": 100.00,\n            \"quantity\": 1\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -36,12 +36,12 @@
 				"auth": {
 					"type": "bearer",
 					"bearer": {
-						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTIyOGVlN2I2YTNkODhkYTE0MmMxNzMiLCJ1c2VybmFtZSI6ImF1bmciLCJpYXQiOjE2OTY3ODg1OTEsImV4cCI6MTY5Njc5MTU5MX0.2B4dwwXT9LSwjTFNl0jUVXRQoLH_uykaOOLOpdxtieM"
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTIyOGVlN2I2YTNkODhkYTE0MmMxNzMiLCJ1c2VybmFtZSI6ImF1bmciLCJpYXQiOjE2OTY4MjEwODgsImV4cCI6MTY5NjgyNDA4OH0.xZWH4GvL2ncNiEMRQsTLpIBxZ9EkutklicHbA0xVOyE"
 					}
 				},
 				"method": "GET",
 				"header": [],
-				"url": "localhost:3000/transaction/expenses/6522cb056f290b978a126486"
+				"url": "localhost:3000/transaction/expenses/6523716fbeb69995b3a129ed"
 			},
 			"response": []
 		},
@@ -51,7 +51,7 @@
 				"auth": {
 					"type": "bearer",
 					"bearer": {
-						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTIyOGVlN2I2YTNkODhkYTE0MmMxNzMiLCJ1c2VybmFtZSI6ImF1bmciLCJpYXQiOjE2OTY3OTA5NDMsImV4cCI6MTY5Njc5Mzk0M30.7tU2arePOxTnE9lx8TbZ_Kt_AgzELFMo7_NDovq2XzE"
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTIyOGVlN2I2YTNkODhkYTE0MmMxNzMiLCJ1c2VybmFtZSI6ImF1bmciLCJpYXQiOjE2OTY4MjEwODgsImV4cCI6MTY5NjgyNDA4OH0.xZWH4GvL2ncNiEMRQsTLpIBxZ9EkutklicHbA0xVOyE"
 					}
 				},
 				"method": "GET",
@@ -113,6 +113,15 @@
 					}
 				},
 				"url": "localhost:3000/user/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete transaction",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:3000/transaction/expenses/65237169beb69995b3a129ec"
 			},
 			"response": []
 		}
